@@ -44,14 +44,12 @@ export const isUser = (req, res, next) => {
 
 export const isAdmin = (req, res, next) => {
     let token = req.headers.authorization;
-    if (!token) {
-        throw new ApiError(401, "Acceso no autorizado, no enviaste Token")
-    }
+    if (!token) throw new ApiError(401, "Acceso no autorizado, no enviaste Token");
     try {
-        token = token.split(" ")[1]
+        token = token.split(" ")[1];
         const decode = jwt.verify(token, process.env.JWT_KEY);
         const user = decode;
-        if (user.role == "ADMIN") {
+        if (user.role === "ADMIN") {
             next();
         } else {
             throw new ApiError(401, "No eres admin");

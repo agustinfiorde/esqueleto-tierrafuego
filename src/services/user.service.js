@@ -4,6 +4,7 @@ import { PasswordUtil } from './../utils/password.util.js';
 
 const findUserByEmailAndPassword = async (email, password) => {
     const user = await UserRepository.getUserByEmail(email);
+    console.log("Fiorde ", user);
     if (!user) throw new ApiError(400, `Usuario no encontrado bajo el email ${email}`)
     const isPasswordValid = await PasswordUtil.comparePasswords(password, user.password);
     if (isPasswordValid) return user

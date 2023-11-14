@@ -1,4 +1,5 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
+import { ROLES } from './role.enum.js';
 
 const User = (sequelize, Sequelize) => {
     const User = sequelize.define("users", {
@@ -19,7 +20,7 @@ const User = (sequelize, Sequelize) => {
             unique: true,
         },
         role: {
-            type: DataTypes.ENUM(['ADMIN', 'USER']),
+            type: DataTypes.ENUM(ROLES),
             defaultValue: 'USER',
         },
         password: {

@@ -29,11 +29,11 @@ const sequelize = new Sequelize({
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-(await db).User = User(sequelize, Sequelize);
-(await db).Comment = Comment(sequelize, Sequelize);
-(await db).Post = Post(sequelize, Sequelize);
+db.User = User(sequelize, Sequelize);
+db.Comment = Comment(sequelize, Sequelize);
+db.Post = Post(sequelize, Sequelize);
 
-(await db).User.associate(db);
-(await db).Post.associate(db);
+db.User.associate(db);
+db.Post.associate(db);
 
 export { db };

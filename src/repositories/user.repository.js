@@ -1,3 +1,4 @@
+import ApiError from "../errors/api.error.js";
 import { db } from "./../db/index.db.js";
 
 const getAllUser = async () => {
@@ -5,11 +6,12 @@ const getAllUser = async () => {
 }
 
 const getUserByEmail = async (email) => {
-    const { dataValues } = await db.User.findOne(
+    const result = await db.User.findOne(
         {
             where: { email },
         });
-    return dataValues;
+    if (!result) throw new ApiError(400, "no se encontro ningun usuario bajo ese email")
+    return { dataValues } = result;
 }
 
 const createUser = async (user) => {
