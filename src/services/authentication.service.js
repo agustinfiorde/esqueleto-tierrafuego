@@ -3,11 +3,11 @@ import ApiError from './../errors/api.error.js';
 import { UserService } from './user.service.js';
 
 /**
- * Algo
+ * Algo asdasdasd asdas dasdas das dasd
  * 
  * @param {string} email - La dirección de correo electrónico del usuario.
  * @param {string} password - La contraseña del usuario.
- * @returns {Promise<any>} - Una promesa que resuelve a algún resultado.
+ * @returns {Promise} - Una promesa que resuelve a algún resultado.
  */
 export const authentication = async (email, password) => {
     try {

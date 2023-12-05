@@ -48,6 +48,8 @@ router.get('', getAll);
  *         description: Post creado con éxito
  */
 router.post('', createPost);
+
+
 router.get('/:id', findById);
 router.get('/user/:id', findByUserId);
 

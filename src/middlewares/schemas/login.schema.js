@@ -4,6 +4,6 @@ import { Schemas } from "./schema.js";
 export const schemaLogin = {
     login: Joi.object().keys({
         email: Schemas.Email,
-        password: Schemas.Password,
+        password: Schemas.PasswordLogin,
     }),
 };

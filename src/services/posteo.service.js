@@ -1,5 +1,12 @@
 import { getAllUser } from "../repositories/user.repository.js";
 
+/**
+ * Funcionalidad provisoria para testear JWT
+ * 
+ * @param {string} email 
+ * @param {string} password 
+ * @returns {Object} User
+ */
 const findUserByEmailAndPassword = (email, password) => {
     //Va ir a la DB y lo va a buscar
     return {

@@ -11,7 +11,12 @@ import { error } from "./src/logger/logger.js";
 import ApiError from './src/errors/api.error.js';
 import { db } from "./src/db/index.db.js";
 
+import http from 'http';
+import { Server } from 'socket.io';
+
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
 try {
   db.sequelize.authenticate().then(() => console.log('Connection has been established successfully.'));
@@ -21,10 +26,25 @@ try {
   console.error('Unable to connect to the database:', error);
 }
 
+io.on('connection', (socket) => {
+  console.log(`Usuario conectado`);
+
+  socket.on('chat message', (msg) => {
+    // console.log(`Mensaje recibido de ${msg.sender}: ${msg.text}`);
+    io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`Usuario desconectado`);
+  });
+});
+
+
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}!`);
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}!`);
 });
 
 app.use(express.json());

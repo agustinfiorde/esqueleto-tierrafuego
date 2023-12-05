@@ -38,7 +38,7 @@ const messageGender = {
 export const Schemas = {
     Id: Joi.string().min(35).max(36).required().messages({ "any.string": "Para la edición el id es obligatorio" }),
     String: Joi.string().min(2).max(30).required().messages(messageString),
-    Email: Joi.string().min(2).max(30).required().messages(messageEmail),
+    Email: Joi.string().min(2).max(30).required().email().messages(messageEmail),
     Dni: Joi.string().min(8).max(8).required().messages(messageDni),
     Password: Joi.string().min(8).max(16).required().messages(messagePassword),
     PasswordLogin: Joi.string().min(8).max(16).required().messages(messagePassword),
